@@ -96,6 +96,15 @@ section { padding: 110px 0; scroll-margin-top: 64px; }
 .chip { display: inline-flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 999px; border: 1px solid var(--line2); background: rgba(255, 255, 255, .03);
   font: 500 13px/1.2 var(--mono); color: var(--t2); white-space: nowrap; }
 .chip img { width: 16px; height: 16px; }
+/* Organization logo tiles: official marks on a small white tile (logos are made for light backgrounds) */
+.org { --h: 32px; --p: 5px; flex: none; display: inline-flex; align-items: center; justify-content: center; height: var(--h); padding: var(--p) calc(var(--p) + 3px);
+  border-radius: 8px; background: #fff; box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .06), 0 2px 8px -3px rgba(0, 0, 0, .55); vertical-align: middle; }
+.org img, .chip .org img { width: auto; height: 100%; max-width: none; object-fit: contain; }
+.org.sm { --h: 24px; --p: 3px; border-radius: 6px; }
+.org.lg { --h: 40px; --p: 6px; border-radius: 9px; }
+.ohead { display: flex; align-items: center; justify-content: space-between; gap: 10px 14px; flex-wrap: wrap; }
+.ohead .tag { align-self: center; }
+.chip.lc { padding: 3px 12px 3px 3px; gap: 8px; }
 
 /* Animated conic border for featured cards */
 .glow::before, .pcard::before { content: ''; position: absolute; inset: -1px; border-radius: inherit; padding: 1px; pointer-events: none;
@@ -158,6 +167,8 @@ section { padding: 110px 0; scroll-margin-top: 64px; }
 .role { display: inline-flex; align-items: center; gap: 12px; padding: 7px 16px 7px 7px; border-radius: 999px; border: 1px solid var(--line2); background: rgba(13, 17, 23, .6);
   -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); font-size: 14.5px; color: var(--t2); max-width: 100%; }
 .role .tag { flex: none; }
+.role .org { margin-right: -2px; }
+.role:has(.org) { padding-left: 5px; }
 .ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
 .orbit { width: 100%; max-width: 430px; aspect-ratio: 1; margin-left: auto; position: relative; transition: transform .25s ease-out; transform-style: preserve-3d; }
 .ring { position: absolute; border-radius: 50%; border: 1px solid rgba(255, 255, 255, .1); }
@@ -211,7 +222,11 @@ section { padding: 110px 0; scroll-margin-top: 64px; }
 .tile strong { display: block; font-size: clamp(34px, 3.8vw, 48px); line-height: 1; font-weight: 800; letter-spacing: -.04em; color: var(--c); font-variant-numeric: tabular-nums; }
 .tile p { color: #fff; font-weight: 600; margin-top: 12px; font-size: 15px; line-height: 1.35; }
 .tile small { display: block; color: var(--t3); font-size: 13px; margin-top: 4px; }
+.thead { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+.thead .org { margin-top: -4px; }
+.thead strong { white-space: nowrap; }
 .now { margin-top: 26px; display: flex; gap: 14px; align-items: baseline; color: var(--t2); font-size: 15px; }
+.now .org { margin: -3px 8px 0 0; }
 .now .tag { --c: var(--green); flex: none; }
 
 /* ---------- Work ---------- */
@@ -243,6 +258,7 @@ section { padding: 110px 0; scroll-margin-top: 64px; }
 .paper h3 { font-size: clamp(22px, 2.3vw, 30px); line-height: 1.22; font-weight: 800; letter-spacing: -.02em; color: #fff; margin-top: 16px; }
 .venue { margin-top: 14px; font: 500 13.5px/1.5 var(--mono); color: var(--t3); }
 .venue b { color: var(--yellow); font-weight: 500; }
+.venue .org { margin: -3px 0 0 8px; }
 .pi { margin-top: 22px; display: grid; gap: 12px; }
 .pi p { display: grid; grid-template-columns: 74px 1fr; gap: 12px; font-size: 15.5px; }
 .pi span { font: 700 11px/2.1 var(--mono); letter-spacing: .12em; color: var(--c); text-transform: uppercase; }
@@ -270,6 +286,8 @@ section { padding: 110px 0; scroll-margin-top: 64px; }
 .talks li p { color: #fff; font-weight: 600; font-size: 15.5px; line-height: 1.4; }
 .talks li small { display: block; margin-top: 4px; font: 500 12px/1.4 var(--mono); color: var(--t3); }
 .talks li small i { font-style: normal; color: var(--c, var(--fpt)); }
+.talks li small .org { margin: -2px 7px 0 0; }
+.club .clubname .org { margin: -4px 10px 0 0; }
 .club { padding: 30px; display: flex; flex-direction: column; gap: 18px; }
 .club .clubname { color: #fff; font-size: 20px; font-weight: 700; line-height: 1.3; letter-spacing: -.01em; }
 .club .clubname span { color: var(--yellow); }
@@ -285,6 +303,10 @@ section { padding: 110px 0; scroll-margin-top: 64px; }
 .tl b { display: block; font: 700 12px/1.4 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--c); }
 .tl p { color: #fff; font-size: 17px; font-weight: 600; line-height: 1.4; margin-top: 4px; }
 .tl small { display: block; color: var(--t3); font-size: 14px; margin-top: 2px; }
+.tl .tli { display: flex; align-items: flex-start; gap: 14px; }
+.tl .tli > div { min-width: 0; }
+.tl .org { width: 78px; margin-top: 0; }
+.tl .org img { width: 100%; }
 .side h3 { font: 600 13px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--t3); margin-bottom: 16px; }
 .side .card { padding: 26px; }
 .side .card + .card { margin-top: 20px; }
@@ -390,6 +412,12 @@ footer .ctas { justify-content: center; margin-top: 36px; }
   .hero { padding: 96px 0 96px; }
   .whoami { font-size: 13px; }
   .role { font-size: 13px; align-items: flex-start; border-radius: 18px; padding: 8px 14px 8px 8px; }
+  .role .org { --h: 26px; --p: 4px; }
+  .thead .org { --h: 28px; --p: 4px; }
+  .tl .org { --h: 32px; --p: 4px; }
+  .tl .org { width: 64px; }
+  .tl .tli { gap: 12px; }
+  .talks li small .org { display: flex; width: fit-content; margin: 2px 0 5px; }
   .ctas .btn { flex: 1 1 auto; }
   .pgrid, .sgrid, .tiles { grid-template-columns: 1fr; }
   .tiles { grid-template-columns: 1fr 1fr; gap: 12px; }
@@ -478,8 +506,8 @@ footer .ctas { justify-content: center; margin-top: 36px; }
         <h1 class="name" id="hero-name" aria-label="Võ Trần Ngọc Hữu"><span class="w">Võ</span> <span class="w">Trần</span> <span class="w">Ngọc</span> <span class="w last">Hữu</span></h1>
         <p class="sig"><span class="p1">Lead people.</span> <span class="p2">Ship systems.</span> <span class="p3">Prove it in numbers.</span></p>
         <div class="roles fade f1">
-          <span class="role"><span class="tag" style="--c:var(--blue)">LEAD</span><span>Google Developer Groups on Campus · <span class="nw">FPT University HCMC</span></span></span>
-          <span class="role"><span class="tag" style="--c:var(--fpt)"><span class="live" aria-hidden="true"></span>JUNIOR</span><span>AI Engineer · <span class="nw">FPT Software HCM</span> · <span class="nw">F-Town 3</span></span></span>
+          <span class="role"><span class="org"><img src="assets/logos/gdg.png" width="320" height="177" alt="Google Developer Groups logo" loading="eager" decoding="async"></span><span class="tag" style="--c:var(--blue)">LEAD</span><span>Google Developer Groups on Campus · <span class="nw">FPT University HCMC</span></span></span>
+          <span class="role"><span class="org"><img src="assets/logos/fpt-software.png" width="320" height="102" alt="FPT Software logo" loading="eager" decoding="async"></span><span class="tag" style="--c:var(--fpt)"><span class="live" aria-hidden="true"></span>JUNIOR</span><span>AI Engineer · <span class="nw">FPT Software HCM</span> · <span class="nw">F-Town 3</span></span></span>
         </div>
         <div class="ctas fade f2">
           <a class="btn primary" href="#work">View my work <svg aria-hidden="true"><use href="#i-down"/></svg></a>
@@ -517,7 +545,7 @@ footer .ctas { justify-content: center; margin-top: 36px; }
         </div>
         <div class="rv">
           <article class="card glow rcard" style="--c:var(--blue)">
-            <span class="tag">LEAD</span>
+            <div class="ohead"><span class="tag">LEAD</span><span class="org lg"><img src="assets/logos/gdg.png" width="320" height="177" alt="Google Developer Groups logo" loading="lazy" decoding="async"></span></div>
             <h3>Google Developer Groups on Campus</h3>
             <p class="sub">FPT University · Ho Chi Minh City</p>
             <ul class="bul">
@@ -530,7 +558,7 @@ footer .ctas { justify-content: center; margin-top: 36px; }
         </div>
         <div class="rv">
           <article class="card glow rcard" style="--c:var(--fpt)">
-            <span class="tag"><span class="live" aria-hidden="true"></span>JUNIOR</span>
+            <div class="ohead"><span class="tag"><span class="live" aria-hidden="true"></span>JUNIOR</span><span class="org lg"><img src="assets/logos/fpt-software.png" width="320" height="102" alt="FPT Software logo" loading="lazy" decoding="async"></span></div>
             <h3>FPT Software HCM</h3>
             <p class="sub">F-Town 3 · AI-Era Junior Program</p>
             <p class="line">Junior AI Engineer · full-stack + RAG pipelines</p>
@@ -545,12 +573,12 @@ footer .ctas { justify-content: center; margin-top: 36px; }
         </div>
       </div>
       <div class="tiles">
-        <div class="card tile rv" style="--c:var(--blue)"><strong data-to="2" data-suf="×">2×</strong><p>ICPC Honorable Mention</p><small>National &amp; Southern · 2025</small></div>
-        <div class="card tile rv" style="--c:var(--red)"><strong data-to="4" data-pre="Top ">Top 4</strong><p>Google Hackathon on Campus</p></div>
-        <div class="card tile rv" style="--c:var(--yellow)"><strong data-to="1" data-suf="st">1st</strong><p>Author · Research Paper</p><small>Edge-Cloud Split Inference</small></div>
+        <div class="card tile rv" style="--c:var(--blue)"><div class="thead"><strong data-to="2" data-suf="×">2×</strong><span class="org lg"><img src="assets/logos/icpc.png" width="320" height="227" alt="ICPC logo" loading="lazy" decoding="async"></span></div><p>ICPC Honorable Mention</p><small>National &amp; Southern · 2025</small></div>
+        <div class="card tile rv" style="--c:var(--red)"><div class="thead"><strong data-to="4" data-pre="Top ">Top 4</strong><span class="org lg"><img src="assets/logos/google.png" width="313" height="320" alt="Google logo" loading="lazy" decoding="async"></span></div><p>Google Hackathon on Campus</p></div>
+        <div class="card tile rv" style="--c:var(--yellow)"><div class="thead"><strong data-to="1" data-suf="st">1st</strong><span class="org lg" title="Target venue: Springer LNCS"><img src="assets/logos/springer.png" width="320" height="85" alt="Springer logo" loading="lazy" decoding="async"></span></div><p>Author · Research Paper</p><small>Edge-Cloud Split Inference</small></div>
         <div class="card tile rv" style="--c:var(--green)"><strong data-to="10" data-suf="+">10+</strong><p>Hackathons &amp; Contests</p><small>2025 – 2026</small></div>
       </div>
-      <p class="now rv"><span class="tag">NOW</span><span>B.Eng. Software Engineering @ FPT University HCMC (2023 – 2027) · Math-specialized, Nguyen Binh Khiem Gifted High School</span></p>
+      <p class="now rv"><span class="tag">NOW</span><span><span class="org sm"><img src="assets/logos/fpt-university.png" width="320" height="97" alt="FPT University logo" loading="lazy" decoding="async"></span>B.Eng. Software Engineering @ FPT University HCMC (2023 – 2027) · Math-specialized, Nguyen Binh Khiem Gifted High School</span></p>
     </div>
   </section>
 
@@ -561,7 +589,7 @@ footer .ctas { justify-content: center; margin-top: 36px; }
       <h2 class="h2 rv" id="work-h">Selected work. <em>Measured, not described.</em></h2>
       <div class="pgrid">
         <div class="rv"><article class="card pcard" style="--c:var(--blue)"><span class="glare"></span>
-          <span class="tag">RESEARCH</span>
+          <div class="ohead"><span class="tag">RESEARCH</span><span class="org"><img src="assets/logos/fpt-university.png" width="320" height="97" alt="FPT University logo" loading="lazy" decoding="async"></span></div>
           <h3>FlashFind-Vi</h3>
           <p class="desc">On-device Vietnamese OCR search engine</p>
           <ul class="proof"><li class="chip">2.5× QPS</li><li class="chip">p95 &lt; 500 ms</li><li class="chip">−30–40% RAM</li></ul>
@@ -569,7 +597,7 @@ footer .ctas { justify-content: center; margin-top: 36px; }
           <p class="plinks"><a href="https://github.com/votranngochuu/FlashFind-Vi" target="_blank" rel="noopener">Code ↗</a></p>
         </article></div>
         <div class="rv"><article class="card pcard" style="--c:var(--fpt)"><span class="glare"></span>
-          <span class="tag">FPT SOFTWARE</span>
+          <div class="ohead"><span class="tag">FPT SOFTWARE</span><span class="org"><img src="assets/logos/fpt-software.png" width="320" height="102" alt="FPT Software logo" loading="lazy" decoding="async"></span></div>
           <h3>Anything2MD</h3>
           <p class="desc">Any document → RAG-ready Markdown</p>
           <ul class="proof"><li class="chip">cost-gated AI</li><li class="chip">zero-egress offline mode</li><li class="chip">queue-decoupled</li></ul>
@@ -577,7 +605,7 @@ footer .ctas { justify-content: center; margin-top: 36px; }
           <p class="plinks"><span class="priv">enterprise project · private</span></p>
         </article></div>
         <div class="rv"><article class="card pcard" style="--c:var(--green)"><span class="glare"></span>
-          <span class="tag">GDGoC</span>
+          <div class="ohead"><span class="tag">GDGoC</span><span class="org"><img src="assets/logos/gdg.png" width="320" height="177" alt="Google Developer Groups logo" loading="lazy" decoding="async"></span></div>
           <h3>Member Ranking</h3>
           <p class="desc">Club leaderboard with a Gemini AI agent</p>
           <ul class="proof"><li class="chip">function calling</li><li class="chip">JWT + RBAC</li><li class="chip">versioned API</li></ul>
@@ -593,7 +621,7 @@ footer .ctas { justify-content: center; margin-top: 36px; }
           <p class="plinks"><a href="https://github.com/votranngochuu/sport-bike-exchange-be" target="_blank" rel="noopener">Code ↗</a><a href="https://sport-bike-exchange-fe.vercel.app" target="_blank" rel="noopener">Live ↗</a></p>
         </article></div>
         <div class="rv"><article class="card pcard" style="--c:var(--yellow)"><span class="glare"></span>
-          <span class="tag">HACKATHON</span>
+          <div class="ohead"><span class="tag">HACKATHON</span><span class="org"><img src="assets/logos/gdg.png" width="320" height="177" alt="Google Developer Groups logo" loading="lazy" decoding="async"></span></div>
           <h3>GDGoC Project Manager Dashboard</h3>
           <p class="desc">Command center for the club's internal hackathon</p>
           <p class="tech">Spring Boot · JavaScript · SQL</p>
@@ -618,7 +646,7 @@ footer .ctas { justify-content: center; margin-top: 36px; }
           <div>
             <span class="tag">FIRST AUTHOR · MC-DP</span>
             <h3>Optimal Layer Partitioning for Memory-Constrained Split Inference on Edge-Cloud Systems</h3>
-            <p class="venue">Target venue: <b>APWeb-WAIM 2026 · Springer LNCS</b></p>
+            <p class="venue">Target venue: <b>APWeb-WAIM 2026 · Springer LNCS</b><span class="org sm"><img src="assets/logos/springer.png" width="320" height="85" alt="Springer logo" loading="lazy" decoding="async"></span></p>
             <div class="pi">
               <p style="--c:var(--red)"><span>Problem</span>latency-only partitioners crash edge devices with out-of-memory errors</p>
               <p style="--c:var(--green)"><span>Idea</span>dual-constrained DP with a Feasibility Oracle for RAM + bandwidth</p>
@@ -634,7 +662,7 @@ footer .ctas { justify-content: center; margin-top: 36px; }
         </article></div>
         <div class="rv"><article class="card paper" style="--c:var(--blue)">
           <div>
-            <span class="tag">RESEARCH LEAD · AITA LAB</span>
+            <div class="ohead"><span class="tag">RESEARCH LEAD · AITA LAB</span><span class="org"><img src="assets/logos/fpt-university.png" width="320" height="97" alt="FPT University logo" loading="lazy" decoding="async"></span></div>
             <h3>FlashFind-Vi</h3>
             <p class="venue">On-device Vietnamese OCR search engine</p>
             <div class="pi"><p style="--c:var(--blue)"><span>Built</span>Unified Index Manager, tone-aware fuzzy matching with weighted edit distance, Bloom filters + LRU caching</p></div>
@@ -657,7 +685,7 @@ footer .ctas { justify-content: center; margin-top: 36px; }
       <div class="rv"><article class="card glow talk">
         <div class="date" aria-hidden="true"><span>NOV</span><b>25</b><span>2026</span></div>
         <div>
-          <span class="tag" style="--c:var(--blue)">FEATURED TALK · ROAD TO DEVFEST 2026</span>
+          <div class="ohead"><span class="tag" style="--c:var(--blue)">FEATURED TALK · ROAD TO DEVFEST 2026</span><span class="org"><img src="assets/logos/gdg.png" width="320" height="177" alt="Google Developer Groups logo" loading="lazy" decoding="async"></span></div>
           <h3>Fast Decisions with the Gemini Decision API &amp; DiffusionGemma on Google Cloud</h3>
           <p class="meta">Road to DevFest 2026 · GDG on Campus FPTU HCMC · Nov 25, 2026</p>
           <p class="quote">When a decision model beats a text-generation LLM: faster, cheaper, better calibrated. Live demo on a Google Cloud GPU.</p>
@@ -667,16 +695,16 @@ footer .ctas { justify-content: center; margin-top: 36px; }
         <div class="rv"><div class="card talks">
           <h3>More talks</h3>
           <ol>
-            <li><div><p>Estimate First, Convert Later: a Cost-Aware Document-to-Markdown Pipeline</p><small><i>FPT Software</i> · Share-to-Growth</small></div></li>
-            <li><div><p>Building AI Assistants with the Model Context Protocol</p><small><i>FPT Software</i> · Share-to-Growth</small></div></li>
-            <li><div><p>Building Responsive AI Apps with Asynchronous Request-Reply</p><small><i>FPT Software</i> · Share-to-Growth</small></div></li>
-            <li><div><p>Chunking Techniques for RAG</p><small><i>FPT Software</i> · Share-to-Growth</small></div></li>
-            <li><div><p>System Design in AI Pipelines</p><small><i style="--c:var(--blue)">GDG on Campus</i></small></div></li>
+            <li><div><p>Estimate First, Convert Later: a Cost-Aware Document-to-Markdown Pipeline</p><small><span class="org sm"><img src="assets/logos/fpt-software.png" width="320" height="102" alt="FPT Software logo" loading="lazy" decoding="async"></span><i>FPT Software</i> · Share-to-Growth</small></div></li>
+            <li><div><p>Building AI Assistants with the Model Context Protocol</p><small><span class="org sm"><img src="assets/logos/fpt-software.png" width="320" height="102" alt="FPT Software logo" loading="lazy" decoding="async"></span><i>FPT Software</i> · Share-to-Growth</small></div></li>
+            <li><div><p>Building Responsive AI Apps with Asynchronous Request-Reply</p><small><span class="org sm"><img src="assets/logos/fpt-software.png" width="320" height="102" alt="FPT Software logo" loading="lazy" decoding="async"></span><i>FPT Software</i> · Share-to-Growth</small></div></li>
+            <li><div><p>Chunking Techniques for RAG</p><small><span class="org sm"><img src="assets/logos/fpt-software.png" width="320" height="102" alt="FPT Software logo" loading="lazy" decoding="async"></span><i>FPT Software</i> · Share-to-Growth</small></div></li>
+            <li><div><p>System Design in AI Pipelines</p><small><span class="org sm"><img src="assets/logos/gdg.png" width="320" height="177" alt="Google Developer Groups logo" loading="lazy" decoding="async"></span><i style="--c:var(--blue)">GDG on Campus</i></small></div></li>
           </ol>
         </div></div>
         <div class="rv"><div class="card club">
           <h3>Community</h3>
-          <p class="clubname">AWS Cloud Club <span>· active member</span></p>
+          <p class="clubname"><span class="org"><img src="assets/logos/aws.png" width="320" height="191" alt="AWS logo" loading="lazy" decoding="async"></span>AWS Cloud Club <span class="nw">· active member</span></p>
           <div class="chips"><span class="chip">EC2</span><span class="chip">S3</span><span class="chip">RDS</span><span class="chip">Lambda</span><span class="chip">VPC</span><span class="chip">IAM</span></div>
           <p class="foot" style="--c:var(--yellow);padding-top:8px"><b>$</b> systems scale code · communities scale people</p>
         </div></div>
@@ -691,16 +719,16 @@ footer .ctas { justify-content: center; margin-top: 36px; }
       <h2 class="h2 rv" id="awards-h">Awards &amp; contests. <em>Pressure-tested.</em></h2>
       <div class="agrid">
         <ol class="tl">
-          <li class="rv" style="--c:var(--blue)"><b>Honorable Mention</b><p>The 2025 ICPC Vietnam National Programming Contest</p><small>team FPTU HCM – Prometheus</small></li>
-          <li class="rv" style="--c:var(--red)"><b>Honorable Mention</b><p>The 2025 ICPC Vietnam Southern Provincial Programming Contest</p></li>
-          <li class="rv" style="--c:var(--yellow)"><b>Top 4</b><p>Google Hackathon on Campus</p></li>
-          <li class="rv" style="--c:var(--green)"><b>Honorable Mention</b><p>FPT University Mathematics Olympiad Team</p></li>
-          <li class="rv" style="--c:var(--t3)"><b>Participant</b><p>FPT Talent Code Contest</p></li>
+          <li class="rv tli" style="--c:var(--blue)"><span class="org lg"><img src="assets/logos/icpc.png" width="320" height="227" alt="ICPC logo" loading="lazy" decoding="async"></span><div><b>Honorable Mention</b><p>The 2025 ICPC Vietnam National Programming Contest</p><small>team FPTU HCM – Prometheus</small></div></li>
+          <li class="rv tli" style="--c:var(--red)"><span class="org lg"><img src="assets/logos/icpc.png" width="320" height="227" alt="ICPC logo" loading="lazy" decoding="async"></span><div><b>Honorable Mention</b><p>The 2025 ICPC Vietnam Southern Provincial Programming Contest</p></div></li>
+          <li class="rv tli" style="--c:var(--yellow)"><span class="org lg"><img src="assets/logos/google.png" width="313" height="320" alt="Google logo" loading="lazy" decoding="async"></span><div><b>Top 4</b><p>Google Hackathon on Campus</p></div></li>
+          <li class="rv tli" style="--c:var(--green)"><span class="org lg"><img src="assets/logos/fpt-university.png" width="320" height="97" alt="FPT University logo" loading="lazy" decoding="async"></span><div><b>Honorable Mention</b><p>FPT University Mathematics Olympiad Team</p></div></li>
+          <li class="rv tli" style="--c:var(--t3)"><span class="org lg"><img src="assets/logos/fpt.png" width="320" height="198" alt="FPT logo" loading="lazy" decoding="async"></span><div><b>Participant</b><p>FPT Talent Code Contest</p></div></li>
         </ol>
         <div class="side">
           <div class="card rv lang">
             <h3>Languages &amp; certificates</h3>
-            <div class="chips"><span class="chip"><b>VSTEP</b> 6.5 (B2)</span><span class="chip"><b>TOEIC</b> 700</span><span class="chip"><b>JLPT</b> N3</span></div>
+            <div class="chips"><span class="chip"><b>VSTEP</b> 6.5 (B2)</span><span class="chip lc"><span class="org sm"><img src="assets/logos/toeic.png" width="320" height="91" alt="TOEIC logo" loading="lazy" decoding="async"></span><b>TOEIC</b> 700</span><span class="chip lc"><span class="org sm"><img src="assets/logos/jlpt.png" width="320" height="97" alt="JLPT logo" loading="lazy" decoding="async"></span><b>JLPT</b> N3</span></div>
           </div>
           <div class="card rv tile" style="--c:var(--green)"><strong data-to="10" data-suf="+">10+</strong><p>hackathons &amp; contests in 2025 – 2026</p><small><a class="below" href="#contests">see them below ↓</a></small></div>
         </div>
@@ -771,7 +799,7 @@ footer .ctas { justify-content: center; margin-top: 36px; }
         <div class="rv"><div class="card sgroup" style="--c:var(--green)"><h3>Data</h3><div class="chips">
           <span class="chip" data-i="postgresql/4169E1">PostgreSQL</span><span class="chip" data-i="supabase/3FCF8E">Supabase</span><span class="chip" data-i="mysql/4479A1">MySQL</span><span class="chip" data-i="mongodb/47A248">MongoDB</span></div></div></div>
         <div class="rv"><div class="card sgroup" style="--c:var(--blue)"><h3>Cloud</h3><div class="chips">
-          <span class="chip">AWS</span><span class="chip">Azure</span><span class="chip" data-i="googlecloud/4285F4">Google Cloud</span><span class="chip" data-i="docker/2496ED">Docker</span></div></div></div>
+          <span class="chip lc"><span class="org sm"><img src="assets/logos/aws.png" width="320" height="191" alt="AWS logo" loading="lazy" decoding="async"></span>AWS</span><span class="chip lc"><span class="org sm"><img src="assets/logos/azure.png" width="320" height="302" alt="Azure logo" loading="lazy" decoding="async"></span>Azure</span><span class="chip lc"><span class="org sm"><img src="assets/logos/gcp-mark.png" width="60" height="50" alt="Google Cloud logo" loading="lazy" decoding="async"></span>Google Cloud</span><span class="chip" data-i="docker/2496ED">Docker</span></div></div></div>
         <div class="rv"><div class="card sgroup" style="--c:var(--red)"><h3>AI</h3><div class="chips">
           <span class="chip" data-i="googlegemini/8E75B2">Gemini</span><span class="chip">RAG</span><span class="chip">MCP</span><span class="chip">WebLLM</span></div></div></div>
       </div>
