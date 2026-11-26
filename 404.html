@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>404 · Võ Trần Ngọc Hữu</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0a0d14">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root { --blue: #4285F4; --red: #EA4335; --yellow: #FBBC05; --green: #34A853; }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body { margin: 0; display: grid; place-items: center; padding: 24px 16px; overflow: hidden; color: #c9d1d9; text-align: center;
+    font: 400 16px/1.6 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    background: radial-gradient(60vmax 60vmax at 10% 0%, rgba(66,133,244,.2), transparent 60%),
+                radial-gradient(50vmax 50vmax at 100% 100%, rgba(52,168,83,.14), transparent 60%),
+                radial-gradient(40vmax 40vmax at 90% 10%, rgba(234,67,53,.12), transparent 60%), #0a0d14; }
+  body::before { content: ''; position: fixed; inset: 0; pointer-events: none; background-image: radial-gradient(rgba(255,255,255,.07) 1px, transparent 1.2px); background-size: 26px 26px; }
+  main { position: relative; }
+  .cmd { font: 500 14px/1.5 'JetBrains Mono', ui-monospace, Consolas, monospace; color: #8b949e; }
+  .cmd span { color: var(--green); }
+  h1 { margin: 14px 0 0; font-size: clamp(96px, 22vw, 200px); line-height: 1; font-weight: 800; letter-spacing: -.06em;
+    background: linear-gradient(90deg, var(--blue), var(--red), var(--yellow), var(--green)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  p.msg { margin: 10px 0 30px; color: #fff; font-size: 20px; font-weight: 600; }
+  a { display: inline-block; padding: 12px 22px; border-radius: 12px; background: var(--blue); color: #fff; font-weight: 600; text-decoration: none;
+    box-shadow: 0 10px 30px -10px rgba(66,133,244,.8); transition: transform .2s; }
+  a:hover { transform: translateY(-2px); }
+  a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+  .bar { position: fixed; left: 0; right: 0; bottom: 0; height: 6px; background: linear-gradient(90deg, var(--blue) 0 25%, var(--red) 25% 50%, var(--yellow) 50% 75%, var(--green) 75%); }
+</style>
+</head>
+<body>
+<main>
+  <p class="cmd"><span>~/votranngochuu</span> $ cd this-page<br>cd: no such file or directory</p>
+  <h1>404</h1>
+  <p class="msg">This route didn't ship.</p>
+  <a href="/">← Back home</a>
+</main>
+<div class="bar" aria-hidden="true"></div>
+</body>
+</html>
