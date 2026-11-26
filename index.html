@@ -289,15 +289,44 @@ section { padding: 110px 0; scroll-margin-top: 64px; }
 .side .card { padding: 26px; }
 .side .card + .card { margin-top: 20px; }
 .lang .chip b { color: #fff; }
-.trail { margin-top: 64px; }
-.trail h3 { font: 600 13px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--t3); margin-bottom: 18px; }
-.marquee { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
-.mtrack { display: flex; width: max-content; animation: marquee 48s linear infinite; }
+.side .tile .below { color: var(--t3); border-bottom: 1px solid transparent; transition: color .2s, border-color .2s; }
+.side .tile .below:hover { color: #fff; border-color: currentColor; }
+/* Hackathons & contests: two opposite-moving rows of banner cards */
+.contests { margin-top: 72px; scroll-margin-top: 80px; }
+.ctitle h3 { font-size: clamp(24px, 2.6vw, 32px); line-height: 1.2; font-weight: 800; letter-spacing: -.02em; color: #fff; }
+.ctitle p { margin-top: 6px; color: var(--t3); font-size: 15.5px; display: flex; align-items: flex-start; gap: 10px; }
+.ctitle p::before { content: ''; flex: none; width: 26px; height: 3px; margin-top: .75em; border-radius: 2px; background: var(--g4); }
+.marquees { margin-top: 22px; display: grid; gap: 4px; }
+.marquee { overflow: hidden; padding: 12px 0 14px; border-radius: 14px;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); }
+.mtrack { display: flex; width: max-content; animation: marquee 56s linear infinite; }
+.marquee.rev .mtrack { animation-direction: reverse; animation-duration: 62s; }
 .marquee:hover .mtrack, .marquee:focus-within .mtrack { animation-play-state: paused; }
-.mtrack ul { display: flex; gap: 12px; padding-right: 12px; }
-.mtrack .chip { padding: 11px 18px; font-size: 14px; background: rgba(18, 23, 33, .7); }
-.mtrack .chip::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--c); }
+.mtrack ul { display: flex; gap: 16px; padding-right: 16px; }
+.bcard { flex: none; width: 320px; min-height: 120px; padding: 14px 16px 14px 14px; display: flex; align-items: center; gap: 14px; border-radius: 16px;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--c) 10%, transparent), transparent 60%), rgba(18, 23, 33, .82); border: 1px solid var(--line2);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+.bcard:hover { transform: translateY(-4px); border-color: color-mix(in srgb, var(--c) 60%, transparent);
+  box-shadow: 0 8px 22px -8px color-mix(in srgb, var(--c) 70%, transparent), 0 0 0 1px color-mix(in srgb, var(--c) 25%, transparent); }
+.bcard.win { border-color: rgba(251, 188, 5, .34); }
+.blogo { flex: none; width: 92px; height: 88px; padding: 10px; border-radius: 14px; background: #fff; display: grid; place-items: center; box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .06); }
+.blogo.wide { padding: 8px 7px; }
+.blogo img { width: 100%; height: 100%; object-fit: contain; }
+.btxt { min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 4px; }
+.btxt strong { color: #fff; font-size: 16.5px; font-weight: 700; line-height: 1.25; letter-spacing: -.01em; }
+.btxt small { color: var(--t3); font-size: 13px; line-height: 1.35; }
+.badge { margin-top: 3px; display: inline-flex; align-items: center; gap: 5px; padding: 4px 9px; border-radius: 999px; font: 600 11.5px/1.2 var(--mono); font-style: normal;
+  color: var(--t2); background: rgba(255, 255, 255, .05); border: 1px solid var(--line2); white-space: nowrap; }
+.badge.gold { color: #ffd65c; background: rgba(251, 188, 5, .14); border-color: rgba(251, 188, 5, .45); box-shadow: 0 0 16px -6px rgba(251, 188, 5, .7); }
+.badge i { font-style: normal; font-size: 11px; }
 @keyframes marquee { to { transform: translateX(-50%); } }
+/* #static: a still, wrapped grid instead of the marquee */
+.static .marquee { -webkit-mask-image: none; mask-image: none; overflow: visible; padding: 0; }
+.static .marquees { gap: 16px; }
+.static .mtrack { animation: none; width: auto; display: block; }
+.static .mtrack ul { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); padding: 0; }
+.static .mtrack ul[aria-hidden] { display: none; }
+.static .bcard { width: auto; }
 
 /* ---------- Stack ---------- */
 .sgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
@@ -378,6 +407,15 @@ footer .ctas { justify-content: center; margin-top: 36px; }
   .cue { display: none; }
   .snowbtn { right: 12px; bottom: 12px; }
   .hire { padding: 9px 12px; }
+  .contests { margin-top: 56px; }
+  .mtrack ul { gap: 12px; padding-right: 12px; }
+  .bcard { width: 260px; min-height: 110px; padding: 11px 12px 11px 11px; gap: 11px; border-radius: 14px; }
+  .blogo { width: 70px; height: 70px; padding: 7px; border-radius: 12px; }
+  .blogo.wide { padding: 5px 4px; }
+  .btxt { gap: 3px; }
+  .btxt strong { font-size: 14.5px; line-height: 1.22; }
+  .btxt small { font-size: 12px; line-height: 1.3; }
+  .badge { margin-top: 2px; font-size: 10.5px; padding: 3px 7px; }
 }
 @media (max-width: 380px) { .stats { grid-template-columns: 1fr 1fr; } .tile strong { font-size: 30px; } }
 
@@ -389,8 +427,13 @@ footer .ctas { justify-content: center; margin-top: 36px; }
   .js:not(.static) .rv:not(.in) { transform: none !important; }
   .js:not(.static) .name .ch, .js:not(.static) .sig span, .js:not(.static) .hero .fade { transform: none !important; animation-name: fadeIn !important; }
   .js:not(.static) .name .last { clip-path: none !important; opacity: 0; animation: fadeIn .8s ease .4s forwards !important; }
-  .mtrack { width: auto; } .mtrack ul { flex-wrap: wrap; } .mtrack ul[aria-hidden] { display: none; }
-  .marquee { -webkit-mask-image: none; mask-image: none; }
+  .marquee { -webkit-mask-image: none; mask-image: none; overflow: visible; padding: 0; }
+  .marquees { gap: 16px; }
+  .mtrack { width: auto; display: block; }
+  .mtrack ul { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); padding: 0; }
+  .mtrack ul[aria-hidden] { display: none; }
+  .bcard { width: auto; }
+  .bcard:hover { transform: none; }
   .btn:hover, .more:hover .arrow { transform: none; }
 }
 @keyframes fadeIn { to { opacity: 1; } }
@@ -657,28 +700,57 @@ footer .ctas { justify-content: center; margin-top: 36px; }
         <div class="side">
           <div class="card rv lang">
             <h3>Languages &amp; certificates</h3>
-            <div class="chips"><span class="chip"><b>VSTEP</b> 6.5 (B2)</span><span class="chip"><b>TOEIC</b> 700</span><span class="chip"><b>JLPT</b> N5</span><span class="chip"><b>Vietnamese</b> native</span></div>
+            <div class="chips"><span class="chip"><b>VSTEP</b> 6.5 (B2)</span><span class="chip"><b>TOEIC</b> 700</span><span class="chip"><b>JLPT</b> N3</span></div>
           </div>
-          <div class="card rv tile" style="--c:var(--green)"><strong data-to="10" data-suf="+">10+</strong><p>hackathons &amp; contests in 2025 – 2026</p><small>the trail ↓</small></div>
+          <div class="card rv tile" style="--c:var(--green)"><strong data-to="10" data-suf="+">10+</strong><p>hackathons &amp; contests in 2025 – 2026</p><small><a class="below" href="#contests">see them below ↓</a></small></div>
         </div>
       </div>
-      <div class="trail rv">
-        <h3>Hackathon trail</h3>
-        <div class="marquee" tabindex="0" aria-label="Hackathon trail (hover or focus to pause)">
+      <div class="contests" id="contests">
+        <div class="ctitle rv">
+          <h3 id="contests-h">Hackathons &amp; Contests Joined</h3>
+          <p>Competed on national and international stages</p>
+        </div>
+        <div class="marquees rv" role="region" aria-labelledby="contests-h">
+        <div class="marquee" tabindex="0" role="group" aria-label="Hackathons and contests, row 1 of 2 (hover or focus to pause)">
           <div class="mtrack">
             <ul>
-              <li class="chip" style="--c:var(--blue)">Google Hackathon on Campus</li>
-              <li class="chip" style="--c:var(--red)">Zalo AI Challenge 2026</li>
-              <li class="chip" style="--c:var(--yellow)">DENSO Hackathon 2026</li>
-              <li class="chip" style="--c:var(--green)">RMIT Hackathon 2026</li>
-              <li class="chip" style="--c:var(--blue)">SEAL Hackathon 2026 (Smart Agriculture)</li>
-              <li class="chip" style="--c:var(--red)">Swinburne Hackathon 2026</li>
-              <li class="chip" style="--c:var(--yellow)">MoMo Hackathon</li>
-              <li class="chip" style="--c:var(--green)">NVIDIA Jetson AI Racer Challenge 2026</li>
-              <li class="chip" style="--c:var(--blue)">Netcompany IT Consultant Challenge 2026</li>
-              <li class="chip" style="--c:var(--red)">Bach Khoa Code Challenge #3</li>
+              <li class="bcard win" style="--c:var(--blue)"><span class="blogo"><img src="assets/logos/icpc.png" width="320" height="227" alt="ICPC logo" loading="lazy" decoding="async"></span><span class="btxt"><strong>ICPC Vietnam (National &amp; Southern)</strong><small>ICPC · 2025</small><em class="badge gold"><i aria-hidden="true">★</i>Honorable Mention ×2</em></span></li>
+              <li class="bcard win" style="--c:var(--red)"><span class="blogo"><img src="assets/logos/google.png" width="313" height="320" alt="Google Developer Groups logo" loading="lazy" decoding="async"></span><span class="btxt"><strong>Google Hackathon on Campus</strong><small>Google Developer Groups</small><em class="badge gold"><i aria-hidden="true">★</i>Top 4</em></span></li>
+              <li class="bcard" style="--c:var(--yellow)"><span class="blogo"><img src="assets/logos/bkac.png" width="317" height="320" alt="HCMUT logo" loading="lazy" decoding="async"></span><span class="btxt"><strong>Bach Khoa Code Challenge #3</strong><small>HCMUT · 2025</small><em class="badge">Competed</em></span></li>
+              <li class="bcard" style="--c:var(--green)"><span class="blogo wide"><img src="assets/logos/zalo.png" width="320" height="112" alt="Zalo logo" loading="lazy" decoding="async"></span><span class="btxt"><strong>Zalo AI Challenge 2026</strong><small>Zalo · VNG</small><em class="badge">Competed</em></span></li>
+              <li class="bcard" style="--c:var(--red)"><span class="blogo wide"><img src="assets/logos/denso.png" width="320" height="61" alt="DENSO logo" loading="lazy" decoding="async"></span><span class="btxt"><strong>DENSO Hackathon 2026</strong><small>DENSO</small><em class="badge">Competed</em></span></li>
+              <li class="bcard" style="--c:var(--blue)"><span class="blogo wide"><img src="assets/logos/rmit.png" width="320" height="111" alt="RMIT University Vietnam logo" loading="lazy" decoding="async"></span><span class="btxt"><strong>RMIT Hackathon 2026</strong><small>RMIT University Vietnam</small><em class="badge">Competed</em></span></li>
+            </ul>
+            <ul aria-hidden="true">
+              <li class="bcard win" style="--c:var(--blue)"><span class="blogo"><img src="assets/logos/icpc.png" width="320" height="227" alt="ICPC logo" loading="lazy" decoding="async"></span><span class="btxt"><strong>ICPC Vietnam (National &amp; Southern)</strong><small>ICPC · 2025</small><em class="badge gold"><i aria-hidden="true">★</i>Honorable Mention ×2</em></span></li>
+              <li class="bcard win" style="--c:var(--red)"><span class="blogo"><img src="assets/logos/google.png" width="313" height="320" alt="Google Developer Groups logo" loading="lazy" decoding="async"></span><span class="btxt"><strong>Google Hackathon on Campus</strong><small>Google Developer Groups</small><em class="badge gold"><i aria-hidden="true">★</i>Top 4</em></span></li>
+              <li class="bcard" style="--c:var(--yellow)"><span class="blogo"><img src="assets/logos/bkac.png" width="317" height="320" alt="HCMUT logo" loading="lazy" decoding="async"></span><span class="btxt"><strong>Bach Khoa Code Challenge #3</strong><small>HCMUT · 2025</small><em class="badge">Competed</em></span></li>
+              <li class="bcard" style="--c:var(--green)"><span class="blogo wide"><img src="assets/logos/zalo.png" width="320" height="112" alt="Zalo logo" loading="lazy" decoding="async"></span><span class="btxt"><strong>Zalo AI Challenge 2026</strong><small>Zalo · VNG</small><em class="badge">Competed</em></span></li>
+              <li class="bcard" style="--c:var(--red)"><span class="blogo wide"><img src="assets/logos/denso.png" width="320" height="61" alt="DENSO logo" loading="lazy" decoding="async"></span><span class="btxt"><strong>DENSO Hackathon 2026</strong><small>DENSO</small><em class="badge">Competed</em></span></li>
+              <li class="bcard" style="--c:var(--blue)"><span class="blogo wide"><img src="assets/logos/rmit.png" width="320" height="111" alt="RMIT University Vietnam logo" loading="lazy" decoding="async"></span><span class="btxt"><strong>RMIT Hackathon 2026</strong><small>RMIT University Vietnam</small><em class="badge">Competed</em></span></li>
             </ul>
           </div>
+        </div>
+        <div class="marquee rev" tabindex="0" role="group" aria-label="Hackathons and contests, row 2 of 2 (hover or focus to pause)">
+          <div class="mtrack">
+            <ul>
+              <li class="bcard" style="--c:var(--green)"><span class="blogo wide"><img src="assets/logos/seal.png" width="320" height="125" alt="FPT University logo" loading="lazy" decoding="async"></span><span class="btxt"><strong>SEAL Hackathon 2026</strong><small>FPT University · Smart Agriculture</small><em class="badge">Competed</em></span></li>
+              <li class="bcard" style="--c:var(--red)"><span class="blogo"><img src="assets/logos/swinburne.png" width="320" height="162" alt="Swinburne University logo" loading="lazy" decoding="async"></span><span class="btxt"><strong>Swinburne Hackathon 2026</strong><small>Swinburne University</small><em class="badge">Competed</em></span></li>
+              <li class="bcard" style="--c:var(--yellow)"><span class="blogo"><img src="assets/logos/momo.png" width="320" height="320" alt="MoMo logo" loading="lazy" decoding="async"></span><span class="btxt"><strong>MoMo Hackathon</strong><small>MoMo</small><em class="badge">Competed</em></span></li>
+              <li class="bcard" style="--c:var(--green)"><span class="blogo wide"><img src="assets/logos/nvidia.png" width="320" height="59" alt="NVIDIA logo" loading="lazy" decoding="async"></span><span class="btxt"><strong>NVIDIA Jetson AI Racer Challenge 2026</strong><small>NVIDIA</small><em class="badge">Competed</em></span></li>
+              <li class="bcard" style="--c:var(--blue)"><span class="blogo wide"><img src="assets/logos/netcompany.png" width="320" height="49" alt="Netcompany logo" loading="lazy" decoding="async"></span><span class="btxt"><strong>IT Consultant Challenge 2026</strong><small>Netcompany</small><em class="badge">Competed</em></span></li>
+              <li class="bcard" style="--c:var(--yellow)"><span class="blogo"><img src="assets/logos/fpt.png" width="320" height="198" alt="FPT logo" loading="lazy" decoding="async"></span><span class="btxt"><strong>FPT Talent Code Contest</strong><small>FPT</small><em class="badge">Competed</em></span></li>
+            </ul>
+            <ul aria-hidden="true">
+              <li class="bcard" style="--c:var(--green)"><span class="blogo wide"><img src="assets/logos/seal.png" width="320" height="125" alt="FPT University logo" loading="lazy" decoding="async"></span><span class="btxt"><strong>SEAL Hackathon 2026</strong><small>FPT University · Smart Agriculture</small><em class="badge">Competed</em></span></li>
+              <li class="bcard" style="--c:var(--red)"><span class="blogo"><img src="assets/logos/swinburne.png" width="320" height="162" alt="Swinburne University logo" loading="lazy" decoding="async"></span><span class="btxt"><strong>Swinburne Hackathon 2026</strong><small>Swinburne University</small><em class="badge">Competed</em></span></li>
+              <li class="bcard" style="--c:var(--yellow)"><span class="blogo"><img src="assets/logos/momo.png" width="320" height="320" alt="MoMo logo" loading="lazy" decoding="async"></span><span class="btxt"><strong>MoMo Hackathon</strong><small>MoMo</small><em class="badge">Competed</em></span></li>
+              <li class="bcard" style="--c:var(--green)"><span class="blogo wide"><img src="assets/logos/nvidia.png" width="320" height="59" alt="NVIDIA logo" loading="lazy" decoding="async"></span><span class="btxt"><strong>NVIDIA Jetson AI Racer Challenge 2026</strong><small>NVIDIA</small><em class="badge">Competed</em></span></li>
+              <li class="bcard" style="--c:var(--blue)"><span class="blogo wide"><img src="assets/logos/netcompany.png" width="320" height="49" alt="Netcompany logo" loading="lazy" decoding="async"></span><span class="btxt"><strong>IT Consultant Challenge 2026</strong><small>Netcompany</small><em class="badge">Competed</em></span></li>
+              <li class="bcard" style="--c:var(--yellow)"><span class="blogo"><img src="assets/logos/fpt.png" width="320" height="198" alt="FPT logo" loading="lazy" decoding="async"></span><span class="btxt"><strong>FPT Talent Code Contest</strong><small>FPT</small><em class="badge">Competed</em></span></li>
+            </ul>
+          </div>
+        </div>
         </div>
       </div>
     </div>
@@ -1004,14 +1076,6 @@ footer .ctas { justify-content: center; margin-top: 36px; }
   if (snowOn) start();
   var onReduceChange = function (e) { reduce = e.matches; };
   if (mqReduce.addEventListener) mqReduce.addEventListener('change', onReduceChange); else if (mqReduce.addListener) mqReduce.addListener(onReduceChange);
-
-  /* ---- Marquee: duplicate the list for a seamless loop ---- */
-  var track = $('.mtrack');
-  if (track) {
-    var dup = track.firstElementChild.cloneNode(true);
-    dup.setAttribute('aria-hidden', 'true');
-    track.appendChild(dup);
-  }
 
   // Static/test mode: load every image eagerly so full-page captures are complete.
   if (isStatic) $$('img').forEach(function (i) { i.loading = 'eager'; i.decoding = 'sync'; });
